@@ -10,10 +10,9 @@ import me.davi.api.SkinAPI;
 
 public enum Skins {
 
-	NONE("Nenhum", "", ""),
+	NONE("Nenhum", "", ""), 
 	SKIN1(Skin.plugin.getConfig().getString("skin1_name"),
-			Skin.plugin.getConfig().getString("skin1_skin").replace("§", "&"),
-			Skin.plugin.getConfig().getString("skin1_lore"));
+			Skin.plugin.getConfig().getString("skin1_skin"), "", Skin.plugin.getConfig().getString("skin1_genero").replaceAll("&", "§"));
 
 	private String name;
 	private String nameSkull;
@@ -46,6 +45,14 @@ public enum Skins {
 
 	public static void setSkin(Player p, Skins skin) {
 		setSkins(p, skin);
+	}
+
+	public static Skins getFromString(String args) {
+		for (Skins skin : values()) {
+			if (skin.getName().equalsIgnoreCase(args))
+				return skin;
+		}
+		return null;
 	}
 
 	private static void setSkins(Player p, Skins skins) {

@@ -17,9 +17,13 @@ public class Skin extends JavaPlugin {
 	public void onEnable() {
 		plugin = this;
 		saveDefaultConfig();
-		registerCommands();
-		
+
+	//	Connections.openConnectionMySQL();
+
 		new SkinInventory(plugin);
+
+		registerCommands();
+
 	}
 
 	@Override
